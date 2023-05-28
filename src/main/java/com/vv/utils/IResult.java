@@ -8,5 +8,6 @@ package com.vv.utils;
  **/
 public interface IResult {
     Integer getCode();
+
     String getMsg();
 }

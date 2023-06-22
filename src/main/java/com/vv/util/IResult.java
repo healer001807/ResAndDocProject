@@ -1,4 +1,4 @@
-package com.vv.utils;
+package com.vv.util;
 
 /**
  * @program: ResAndDocProject

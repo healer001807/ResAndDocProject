@@ -1,4 +1,4 @@
-package com.vv.utils;
+package com.vv.util;
 
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;

@@ -1,7 +1,8 @@
-package com.vv.utils;
+package com.vv.util;
 
 import com.vv.enums.ResEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,14 +14,14 @@ import lombok.NoArgsConstructor;
  * @create: 2023-05-24 14:39
  **/
 
-@Schema(name = "ResUtils", description = "返回响应信息")
+@Schema(name = "resUtils", description = "返回响应信息")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class ResUtils<T> {
     @Schema(name = "code", description = "响应码值")
     private Integer code;
-    @Schema(name = "message", description = "响应信息")
+    @Schema(name = "msg", description = "响应信息")
     private String msg;
     @Schema(name = "data", description = "响应体")
     private T data;
@@ -34,6 +35,7 @@ public class ResUtils<T> {
      **/
 
 
+    @ApiResponse(description = "成功")
     public static <T> ResUtils<T> success() {
         return new ResUtils<T>(ResEnum.SUCCESS.getCode(), ResEnum.SUCCESS.getMsg());
     }

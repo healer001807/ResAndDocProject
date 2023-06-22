@@ -1,7 +1,7 @@
 package com.vv.exception;
 
 import com.vv.enums.ResEnum;
-import com.vv.utils.ResUtils;
+import com.vv.util.ResUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
@@ -76,4 +76,43 @@ public class ExceptionAdvice {
         return ResUtils.failed(ex.getMessage());
     }
 
+
+    /***
+     * @description 空指针异常
+     * @param [ex]
+     * @return com.vv.utils.ResUtils<?>
+     * @author
+     * @date 2023/6/22
+     **/
+
+    @ExceptionHandler(NullPointerException.class)
+    public ResUtils<?> handleNullPointerException(NullPointerException ex) {
+        return ResUtils.failed(ResEnum.VALIDATE_FAILED.getCode(), ResEnum.VALIDATE_FAILED.getMsg());
+    }
+
+    /***
+     * @description 数组异常
+     * @param []
+     * @return com.vv.utils.ResUtils<?>
+     * @author
+     * @date 2023/6/22
+     **/
+
+    @ExceptionHandler(ArrayIndexOutOfBoundsException.class)
+    public ResUtils<?> handleNullPointerException() {
+        return ResUtils.failed(ResEnum.PARAMS_FAILED.getCode(), ResEnum.PARAMS_FAILED.getMsg());
+    }
+
+    /***
+     * @description 参数转换异常
+     * @param []
+     * @return com.vv.utils.ResUtils<?>
+     * @author
+     * @date 2023/6/22
+     **/
+
+    @ExceptionHandler(ArithmeticException.class)
+    public ResUtils<?> handleArithmeticException() {
+        return ResUtils.failed(ResEnum.PARAMS_FAILED.getCode(), ResEnum.PARAMS_FAILED.getMsg());
+    }
 }

@@ -33,26 +33,10 @@ public class ResUtils<T> {
      * @author
      * @date 2023/5/28
      **/
-
-
-    @ApiResponse(description = "成功")
+    @ApiResponse(description = "调用成功")
     public static <T> ResUtils<T> success() {
         return new ResUtils<T>(ResEnum.SUCCESS.getCode(), ResEnum.SUCCESS.getMsg());
     }
-
-    /***
-     * @description 消息
-     * @param [msg]
-     * @return com.vv.utils.ResUtils<T>
-     * @author
-     * @date 2023/5/28
-     **/
-
-    public static <T> ResUtils<T> success(String msg) {
-
-        return new ResUtils<T>(ResEnum.SUCCESS.getCode(), msg);
-    }
-
 
     /**
      * 接口调用成功：返回数据
@@ -78,7 +62,7 @@ public class ResUtils<T> {
     }
 
     /**
-     * 接口调用成功：根据响应
+     * 接口调用成功：根据响应消息和数据返回
      *
      * @param msg
      * @param data

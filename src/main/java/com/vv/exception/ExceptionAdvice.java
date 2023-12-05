@@ -29,8 +29,11 @@ public class ExceptionAdvice {
      */
     @ExceptionHandler({BusinessException.class})
     public ResUtils<?> handleBusinessException(BusinessException exception) {
-        log.info("业务异常" + exception);
-        return ResUtils.failed(exception.getMessage());
+        log.info("业务异常", exception);
+        if (exception.getCode() != null) {
+            return ResUtils.failed(exception.getCode(), exception.getMsg());
+        }
+        return ResUtils.failed(exception.getMsg());
     }
 
     /**
@@ -38,7 +41,7 @@ public class ExceptionAdvice {
      */
     @ExceptionHandler({ForbiddenException.class})
     public ResUtils<?> handleForbiddenException(ForbiddenException exception) {
-        log.info("捕获异常" + exception);
+        log.info("捕获异常", exception);
         return ResUtils.failed(ResEnum.FORBIDDEN);
     }
 
@@ -99,7 +102,7 @@ public class ExceptionAdvice {
      **/
 
     @ExceptionHandler(ArrayIndexOutOfBoundsException.class)
-    public ResUtils<?> handleNullPointerException() {
+    public ResUtils<?> handleArrayIndexOutOfBoundsException() {
         return ResUtils.failed(ResEnum.PARAMS_FAILED.getCode(), ResEnum.PARAMS_FAILED.getMsg());
     }
 
@@ -114,5 +117,11 @@ public class ExceptionAdvice {
     @ExceptionHandler(ArithmeticException.class)
     public ResUtils<?> handleArithmeticException() {
         return ResUtils.failed(ResEnum.PARAMS_FAILED.getCode(), ResEnum.PARAMS_FAILED.getMsg());
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    public ResUtils<?> runtimeException(RuntimeException ex) {
+        log.error("运行时异常", ex.getStackTrace() + ":::" + ex.getMessage());
+        return ResUtils.failed(ResEnum.PARAMS_FAILED.getCode(), ex.getMessage());
     }
 }

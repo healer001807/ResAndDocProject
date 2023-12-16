@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  * @create: 2023-04-22 21:42
  **/
 @Slf4j
-@RestControllerAdvice
+@RestControllerAdvice("com.vv.controller")
 public class ExceptionAdvice {
 
     /**

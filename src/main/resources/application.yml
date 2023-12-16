@@ -1,1 +1,19 @@
-
+#配置接口文档
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs  #用json格式
+    #配置扫描包
+    enabled: true
+  group-configs:
+    - group: com.vv
+      paths-to-match: '/**'
+      packages-to-scan: com.vv
+knife4j:
+  enable: true #开启文档
+  setting:
+    enable-swagger-models: true
+    language: zh_cn

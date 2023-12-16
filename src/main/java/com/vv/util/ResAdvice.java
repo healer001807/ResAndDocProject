@@ -14,7 +14,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
  * @author: kangwei
  * @create: 2023-05-24 15:05
  **/
-@RestControllerAdvice
+// 此注解一定要加扫描
+@RestControllerAdvice("com.vv.controller")
 public class ResAdvice implements ResponseBodyAdvice<Object> {
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
